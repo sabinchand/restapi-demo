@@ -7,7 +7,9 @@ import spring.restapi.repository.EmployeeRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -35,7 +37,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee updateEmployee(Employee updatedEmployee, Long id) {
-
         Employee oldEmployee = employeeRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Employee", "Id", id));
             oldEmployee.setFirstName(updatedEmployee.getFirstName());
             oldEmployee.setLastName(updatedEmployee.getLastName());
