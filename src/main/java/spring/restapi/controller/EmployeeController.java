@@ -44,8 +44,9 @@ public class EmployeeController {
 
     //DELETE A EMPLOYEE
     @DeleteMapping("/employee")
-    public void deleteEmployeeById(@RequestParam Long id){
+    public ResponseEntity<String> deleteEmployeeById(@RequestParam Long id){
         employeeService.deleteEmployee(id);
+        return new ResponseEntity<>("Employee deleted successfully!", HttpStatus.OK);
     }
 
 
